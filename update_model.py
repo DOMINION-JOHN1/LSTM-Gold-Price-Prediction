@@ -39,7 +39,7 @@ def main():
 
     scaler = RobustScaler()
     # Load the existing LSTM model
-    model = keras.models.load_model('GOLDH&L.h5')
+    model = keras.models.load_model('GOLDH&L(2).h5')
 
     # Step 1: Set up the script
     print("Updating the LSTM model with the latest data...")
