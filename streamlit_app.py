@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from tensorflow import keras
 from sklearn.preprocessing import RobustScaler
+from PIL import Image
 
 # Load the updated machine learning model
 model = keras.models.load_model('GOLDH&L (2).h5')
@@ -12,6 +13,9 @@ def main():
     st.title('Gold Price Predictor')
 
     st.write("Welcome to the Gold Price Predictor App!")
+
+    image = Image.open("gold5.jpg")
+    st.image(image, use_column_width=True)
 
     # User interaction and data input
     st.sidebar.header('User Input:')
