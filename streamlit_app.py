@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 
 # Load the updated machine learning model
-model = joblib.load('GOLDH&L.h5')
+model = joblib.load('GOLDH&L(2).h5')
 
 # Streamlit app
 def main():
