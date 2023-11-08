@@ -2,7 +2,7 @@ import streamlit as st
 from tensorflow import keras
 
 # Load the updated machine learning model
- model = keras.models.load_model('GOLDH&L (2).h5')
+model = keras.models.load_model('GOLDH&L (2).h5')
 
 # Streamlit app
 def main():
