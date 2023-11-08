@@ -1,8 +1,10 @@
 import streamlit as st
 from tensorflow import keras
+from sklearn.preprocessing import RobustScaler
 
 # Load the updated machine learning model
 model = keras.models.load_model('GOLDH&L (2).h5')
+scaler = RobustScaler()
 
 # Streamlit app
 def main():
@@ -22,8 +24,10 @@ def main():
 
     if st.sidebar.button('Predict'):
         # Use the loaded model to make predictions
-        input_data = [[open_price, high_price, low_price, close_price, volume, day_of_month, day_of_week]]
-        prediction = model.predict(input_data)[0]
+        X = [[open_price, high_price, low_price, close_price, volume, day_of_month, day_of_week]]
+        X = scaler.fit_transform(X)
+        X = X (X[0], 1, 7)
+        prediction = model.predict(X)[0]
 
         # Calculate the next high and low
         next_high = prediction[0]
