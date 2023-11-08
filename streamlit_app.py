@@ -1,8 +1,8 @@
 import streamlit as st
-import joblib
+from tensorflow import keras
 
 # Load the updated machine learning model
-model = joblib.load('GOLDH&L(2).h5')
+ model = keras.models.load_model('GOLDH&L(2).h5')
 
 # Streamlit app
 def main():
