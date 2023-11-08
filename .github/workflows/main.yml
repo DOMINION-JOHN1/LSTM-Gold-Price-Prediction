@@ -1,0 +1,27 @@
+name: Update Model
+
+on:
+  schedule:
+    - cron: '0 23 * * *' # Set your desired schedule (e.g., daily at midnight UTC)
+
+jobs:
+  update-model:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # Choose the appropriate Python version
+
+    - name: Run the update_model script
+      run: |
+        python update_model.py
+        git config user.email "you@example.com"
+        git config user.name "GitHub Actions"
+        git add .
+        git commit -m "Update model"
+        git push
