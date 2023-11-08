@@ -14,7 +14,7 @@ def main():
 
     st.write("Welcome to the Gold Price Predictor App!")
 
-    image = Image.open("gold5.jpg")
+    image = Image.open("gold5.png")
     st.image(image, use_column_width=True)
 
     # User interaction and data input
