@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 from tensorflow import keras
 from sklearn.preprocessing import RobustScaler
 
@@ -24,14 +25,13 @@ def main():
 
     if st.sidebar.button('Predict'):
         # Use the loaded model to make predictions
-        X = [[open_price, high_price, low_price, close_price, volume, day_of_month, day_of_week]]
-        X = scaler.fit_transform(X)
-        X = X (X[0], 1, 7)
-        prediction = model.predict(X)[0]
+        input_data = np.array([[open_price, high_price, low_price, close_price, volume, day_of_month, day_of_week]])
+        input_data = scaler.transform(input_data)
+        prediction = model.predict(input_data)
 
         # Calculate the next high and low
-        next_high = prediction[0]
-        next_low = prediction[1]
+        next_high = prediction[0][0]
+        next_low = prediction[0][1]
 
         st.write(f'Predicted Next High Price: {next_high:.2f}')
         st.write(f'Predicted Next Low Price: {next_low:.2f}')
