@@ -31,7 +31,7 @@ def update_and_retrain_model(model, scaler, data):
     y = data[['Next High', 'Next Low']]
     X = scaler.fit_transform(X)
     X = X (X[0], 1, 7)
-    model.fit(X, y, epochs=10, batch_size=32, validation_split=0.2)
+    model.fit(X, y, epochs=34, batch_size=32, validation_split=0.2)
     return model
 
 # Main function
