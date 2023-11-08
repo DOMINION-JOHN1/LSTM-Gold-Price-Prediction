@@ -1,4 +1,4 @@
-name: Update Model
+name: Update_Model
 
 on:
   schedule:
