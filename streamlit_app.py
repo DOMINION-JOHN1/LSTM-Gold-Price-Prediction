@@ -26,7 +26,7 @@ def main():
     if st.sidebar.button('Predict'):
         # Use the loaded model to make predictions
         input_data = np.array([[open_price, high_price, low_price, close_price, volume, day_of_month, day_of_week]])
-        input_data = scaler.transform(input_data)
+        input_data = scaler.fit_transform(input_data)
         prediction = model.predict(input_data)
 
         # Calculate the next high and low
