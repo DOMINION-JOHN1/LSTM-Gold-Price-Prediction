@@ -30,6 +30,9 @@ def main():
     if st.sidebar.button('Predict'):
         # Use the loaded model to make predictions
         input_data = np.array([[Open, High, Low, Close, Volume, Month_Num, Day_of_Week_Num]])
+        column_names = ["Open", "High", "Low", "Close", "Volume", "Month_Num", "Day_of_Week_Num"]
+        # Creating a DataFrame
+        input_data = pd.DataFrame(data=input_data, columns=column_names)
         input_data = scaler.fit_transform(input_data)
         input_data = input_data.reshape(input_data.shape[0], 1, 7)
         prediction = model.predict(input_data)
