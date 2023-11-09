@@ -44,6 +44,3 @@ def main():
     # Display model information
     st.sidebar.header('Model Information:')
     st.sidebar.write("This model has been updated with the latest data.")
-
-if __name__ == '__main__':
-    main()
