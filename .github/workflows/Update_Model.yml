@@ -2,7 +2,7 @@ name: Update LSTM Model
 
 on:
   schedule:
-    - cron: "0 11 * * *"
+    - cron: "0 14 * * *"
 
 jobs:
   update_model:
@@ -15,7 +15,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.x
+        python-version: auto
 
     - name: Install Dependencies
       run: |
