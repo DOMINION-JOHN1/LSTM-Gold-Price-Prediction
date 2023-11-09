@@ -1,26 +1,32 @@
-name: Update_Model
+name: Update LSTM Model
 
 on:
   schedule:
-    - cron: '0 23 * * *' # Set your desired schedule (e.g., daily at midnight UTC)
+    - cron: "0 23 * * *"
 
 jobs:
-  update-model:
-    runs-on: ubuntu-latest
+  update_model:
+    runs-on: windows-latest
 
     steps:
-    - name: Check out the code
-      uses: actions/checkout@v2
+      - name: Check Out Code
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x' # Choose the appropriate Python version
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
 
-    - name: Commit and Push
-      run: |
-        git config user.email "jdominion123@gmail.com"
-        git config user.name "DOMINION-JOHN1"
-        git add .
-        git commit -m "Update LSTM Model"
-        git push
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update Model
+        run: python update_model.py
+
+      - name: Commit and Push
+        run: |
+          git config user.email "jdominion123@gmail.com"
+          git config user.name "DOMINION-JOHN1"
+          git add .
+          git commit -m "Update LSTM Model"
+          git push
