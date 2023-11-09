@@ -19,17 +19,17 @@ def main():
 
     # User interaction and data input
     st.sidebar.header('User Input:')
-    open_price = st.sidebar.number_input('Enter the Open Price:', min_value=0.0)
-    high_price = st.sidebar.number_input('Enter the High Price:', min_value=0.0)
-    low_price = st.sidebar.number_input('Enter the Low Price:', min_value=0.0)
-    close_price = st.sidebar.number_input('Enter the Close Price:', min_value=0.0)
-    volume = st.sidebar.number_input('Enter the Volume:', min_value=0.0)
-    day_of_month = st.sidebar.number_input('Enter the Day of the Month:', min_value=1, max_value=31)
-    day_of_week = st.sidebar.number_input('Enter the Day of the Week (1=Monday, 7=Sunday):', min_value=1, max_value=7)
+    Open = st.sidebar.number_input('Enter the Open Price:', min_value=0.0)
+    High = st.sidebar.number_input('Enter the High Price:', min_value=0.0)
+    Low = st.sidebar.number_input('Enter the Low Price:', min_value=0.0)
+    Close = st.sidebar.number_input('Enter the Close Price:', min_value=0.0)
+    Volume = st.sidebar.number_input('Enter the Volume:', min_value=0.0)
+    Month_Num = st.sidebar.number_input('Enter the Day of the Month:', min_value=1, max_value=31)
+    Day_of_Week_Num = st.sidebar.number_input('Enter the Day of the Week (1=Monday, 7=Sunday):', min_value=1, max_value=7)
 
     if st.sidebar.button('Predict'):
         # Use the loaded model to make predictions
-        input_data = np.array([[open_price, high_price, low_price, close_price, volume, day_of_month, day_of_week]])
+        input_data = np.array([[Open, High, Low, Close, Volume, Month_Num, Day_of_Week_Num]])
         input_data = scaler.fit_transform(input_data)
         input_data = input_data.reshape(input_data.shape[0], 1, 7)
         prediction = model.predict(input_data)
