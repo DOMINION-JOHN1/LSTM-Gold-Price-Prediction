@@ -2,7 +2,7 @@ name: Update LSTM Model
 
 on:
   schedule:
-    - cron: "0 23 * * *"
+    - cron: "0 11 * * *"
 
 jobs:
   update_model:
