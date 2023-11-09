@@ -36,7 +36,7 @@ def main():
 
         # Calculate the next high and low
         next_high = prediction[0][0]
-        next_low = prediction[0][2]
+        next_low = prediction[0][1]
 
         st.write(f'Predicted Next High Price: {next_high:.2f}')
         st.write(f'Predicted Next Low Price: {next_low:.2f}')
