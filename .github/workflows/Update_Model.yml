@@ -2,7 +2,7 @@ name: Update_Model
 
 on:
   schedule:
-    - cron: "30 21 * * *"
+    - cron: "36 21 * * *"
 
 jobs:
   update_model:
@@ -24,7 +24,6 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          set -x
           python -m venv .venv
           . .venv/Scripts/activate
           pip install -r requirements.txt
