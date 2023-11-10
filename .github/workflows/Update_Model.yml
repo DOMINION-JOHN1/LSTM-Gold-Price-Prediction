@@ -2,7 +2,7 @@ name: Update LSTM Model
 
 on:
   schedule:
-    - cron: "0 14-15 * * *"
+    - cron: "0 21-10 * * *"
 
 jobs:
   update_model:
@@ -10,17 +10,17 @@ jobs:
 
     steps:
       - name: Check Out Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Use the latest version of the action
     
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4  # Use the latest version of the action
         with:
-          node-version: '16'
+          node-version: '16'  # Specify the Node.js version you want to use
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4  # Use the latest version of the action
         with:
-          python-version: '3.8'  # Specify a Python version from the available list
+          python-version: '3.x'  # Use the latest available Python 3 version
 
       - name: Install Dependencies
         run: |
