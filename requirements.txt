@@ -32,11 +32,11 @@ smmap==5.0.0
 starlette
 streamlit
 tenacity==8.2.3
-tensorboard==2.13.0
-tensorboard-data-server==0.7.1
+tensorboard==2.14.1
+tensorboard-data-server==0.7.2
 tensorflow==2.14.0
 tensorflow-estimator==2.14.0
-tensorflow-io-gcs-filesystem==0.31.0
+tensorflow-io-gcs-filesystem==0.34.0
 termcolor==2.3.0
 toml==0.10.2
 toolz==0.12.0
