@@ -1,6 +1,5 @@
 disutils
 numpy
-oauthlib==3.2.2
 opt-einsum==3.3.0
 joblib==1.2.0
 pydantic
@@ -21,7 +20,6 @@ pytz-deprecation-shim==0.1.0.post0
 referencing==0.30.2
 render==1.0.0
 requests
-requests-oauthlib
 rich==13.5.2
 rpds-py==0.10.0
 rsa==4.9
