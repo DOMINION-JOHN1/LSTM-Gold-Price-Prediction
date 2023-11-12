@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4  # Use the latest version of the action
         with:
-          python-version: '3.9'  # Use the latest available Python 3 version
+          python-version: '3.10'  # Use the latest available Python 3 version
 
       - name: Install Dependencies
         run: |
