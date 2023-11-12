@@ -2,7 +2,7 @@ name: Update_Model
 
 on:
   schedule:
-    - cron: "15 16 * * *"
+    - cron: "36 16 * * *"
 
 jobs:
   update_model:
