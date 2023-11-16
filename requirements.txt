@@ -3,7 +3,7 @@ disutils
 numpy
 opt-einsum==3.3.0
 joblib==1.2.0
-pydantic==2.0.2
+pydantic
 packaging==23.0
 pandas==2.0.0
 pickleshare==0.7.5
