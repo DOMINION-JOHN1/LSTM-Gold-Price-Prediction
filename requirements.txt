@@ -182,7 +182,6 @@ ipytree==0.2.2
 ipywidgets==7.7.1
 itsdangerous==2.1.2
 jax==0.4.20
-jaxlib @ https://storage.googleapis.com/jax-releases/cuda11/jaxlib-0.4.20+cuda11.cudnn86-cp310-cp310-manylinux2014_x86_64.whl#sha256=01be66238133f884bf5adf15cd7eaaf8445f9d4b056c5c64df28a997a6aff2fe
 jeepney==0.7.1
 jieba==0.42.1
 Jinja2==3.1.2
