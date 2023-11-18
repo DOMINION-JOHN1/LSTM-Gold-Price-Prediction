@@ -1,9 +1,7 @@
 import yfinance as yf
 import pandas as pd
-import numpy as np
 from tensorflow import keras
 from sklearn.preprocessing import StandardScaler
-
 
 # Step 2: Acquire historical data from Yahoo Finance
 def fetch_gold_data():
@@ -12,32 +10,31 @@ def fetch_gold_data():
 
 # Step 3: Preprocess and clean the data
 def preprocess_data(data):
-    data=pd.DataFrame(data)
+    data = pd.DataFrame(data)
     # Convert the "Date" column to a datetime object
-    data.index=pd.to_datetime(data.index)
+    data.index = pd.to_datetime(data.index)
     # Create a new column for the month of the year (as numbers)
-    data['Month_Num']=data.index.month
+    data['Month_Num'] = data.index.month
     # Create a new column for the day of the week (as numbers, where Monday is 0 and Sunday is 6)
-    data['Day_of_Week_Num']=data.index.dayofweek
+    data['Day_of_Week_Num'] = data.index.dayofweek
     data = data.reset_index(drop=True).drop(columns=['Adj Close'])
-    data['Next High']=data['High'].shift(-1)
-    data['Next Low']=data['Low'].shift(-1)
+    data['Next Close'] = data['Close'].shift(-1)
     return data
 
 # Step 4: Update and retrain your LSTM model
 def update_and_retrain_model(model, scaler, data):
     data.dropna(inplace=True)
-    X = data.drop(['Next High', 'Next Close', 'Next Low'], axis=1)
-    y = data[['Next High', 'Next Low']]
+    X = data.drop(['Next Close'], axis=1)  # Adjusted to predict only the next close
+    y = data['Next Close']  # Adjusted to predict only the next close
     X = scaler.fit_transform(X)
-    X = X (X[0], 1, 7)
-    model.fit(X, y, epochs=34, batch_size=32, validation_split=0.2)
+    X = X.reshape(X.shape[0], 1, X.shape[1])  # Reshape X for LSTM input
+    model.fit(X, y, epochs=100, batch_size=32, validation_split=0.2)
     return model
 
 # Main function
 def main():
-
     scaler = StandardScaler()
+
     # Load the existing LSTM model
     model = keras.models.load_model('best_model(1).h5')
 
@@ -54,7 +51,7 @@ def main():
     updated_model = update_and_retrain_model(model, scaler, cleaned_data)
 
     # Save the updated LSTM model
-    updated_model.save('GOLDH&L.h5')
+    updated_model.save('best_model.h5')
 
 if __name__ == '__main__':
     main()
