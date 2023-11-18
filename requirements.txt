@@ -103,17 +103,6 @@ frozendict==2.3.8
 frozenlist==1.4.0
 fsspec==2023.6.0
 future==0.18.3
-gast==0.5.4
-gcsfs==2023.6.0
-GDAL==3.4.3
-gdown==4.6.6
-geemap==0.28.2
-gensim==4.3.2
-geocoder==1.38.1
-geographiclib==2.0
-geopandas==0.13.2
-geopy==2.3.0
-gin-config==0.5.0
 glob2==0.7
 google==2.0.3
 google-api-core==2.11.1
