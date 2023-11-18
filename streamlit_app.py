@@ -38,12 +38,10 @@ def main():
         input_data = input_data.reshape(input_data.shape[0], 1, 7)
         prediction = model.predict(input_data)
 
-        # Calculate the next high and low
-        next_high = prediction[0][0]
-        next_low = prediction[0][1]
+        # Calculate the next close (assuming it's the first output in the prediction)
+        next_close = prediction[0][0]
 
-        st.write(f'Predicted Next High Price: {next_high:.2f}')
-        st.write(f'Predicted Next Low Price: {next_low:.2f}')
+        st.write(f'Predicted Next Close Price: {next_close:.2f}')
 
     # Display model information
     st.sidebar.header('Model Information:')
