@@ -2,12 +2,12 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 from tensorflow import keras
-from sklearn.preprocessing import RobustScaler
+from sklearn.preprocessing import StandardScaler
 
 
 # Step 2: Acquire historical data from Yahoo Finance
 def fetch_gold_data():
-    gold_data = yf.download('Gold', period='1d')
+    gold_data = yf.download('GC=F', period='1d')
     return gold_data
 
 # Step 3: Preprocess and clean the data
@@ -37,9 +37,9 @@ def update_and_retrain_model(model, scaler, data):
 # Main function
 def main():
 
-    scaler = RobustScaler()
+    scaler = StandardScaler()
     # Load the existing LSTM model
-    model = keras.models.load_model('GOLDH&L (2).h5')
+    model = keras.models.load_model('best_model(1).h5')
 
     # Step 1: Set up the script
     print("Updating the LSTM model with the latest data...")
