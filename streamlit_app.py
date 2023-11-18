@@ -2,12 +2,12 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 from tensorflow import keras
-from sklearn.preprocessing import RobustScaler
+from sklearn.preprocessing import StandardScaler
 from PIL import Image
 
 # Load the updated machine learning model
-model = keras.models.load_model('GOLDH&L (2).h5')
-scaler = RobustScaler()
+model = keras.models.load_model('best_model(1).h5')
+scaler = StandardScaler()
 
 # Streamlit app
 def main():
