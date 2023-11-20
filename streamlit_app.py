@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
-import tensorflow as tf
 from tensorflow import keras
 from sklearn.preprocessing import StandardScaler
 from PIL import Image
@@ -20,7 +19,9 @@ def predict_price(Open, High, Low, Close, Volume, Month_Num, Day_of_Week_Num):
     input_data = pd.DataFrame(data=input_data, columns=column_names)
     input_data = scaler.fit_transform(input_data)
     input_data = input_data.reshape(input_data.shape[0], 1, 7)
-    prediction = model.predict(input_data)
+
+    # Call the model directly on the input tensor
+    prediction = model(input_data)
 
     # Calculate the next close (assuming it's the first output in the prediction)
     next_close = prediction[0][0]
