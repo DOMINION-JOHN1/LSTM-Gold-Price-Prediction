@@ -36,7 +36,7 @@ def main():
     scaler = StandardScaler()
 
     # Load the existing LSTM model
-    model = keras.models.load_model('best_model(1).h5')
+    model = keras.models.load_model('best_model (1).h5')
 
     # Step 1: Set up the script
     print("Updating the LSTM model with the latest data...")
