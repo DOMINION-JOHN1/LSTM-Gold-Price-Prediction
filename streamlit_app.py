@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from PIL import Image
 
 # Load the updated machine learning model
-model = keras.models.load_model('best_model(1).h5')
+model = keras.models.load_model('best_model (1).h5')
 scaler = StandardScaler()
 
 # Streamlit app
