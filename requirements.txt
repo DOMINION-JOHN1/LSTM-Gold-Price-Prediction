@@ -31,7 +31,6 @@ packaging==23.2
 pandas==1.5.3
 pickleshare==0.7.5
 Pillow==9.4.0
-pip-tools==6.13.0
 plotly==5.15.0
 python-utils==3.8.1
 referencing==0.31.0
