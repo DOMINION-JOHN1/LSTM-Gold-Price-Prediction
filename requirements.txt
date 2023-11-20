@@ -43,8 +43,6 @@ scikit-learn==1.2.2
 seaborn==0.12.2
 streamlit==1.26.0
 tensorflow==2.14.0
-tensorflow-datasets==4.9.3
-tensorflow-estimator==2.14.0
 toml==0.10.2
 tqdm==4.66.1
 yfinance==0.2.31
