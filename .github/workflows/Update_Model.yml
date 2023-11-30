@@ -2,7 +2,7 @@ name: Update_Model
 
 on:
   schedule:
-    - cron: "43 20 * * *"
+    - cron: "57 20 * * *"
 
 jobs:
   update_model:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.9'
 
       - name: Install Dependencies
         run: |
