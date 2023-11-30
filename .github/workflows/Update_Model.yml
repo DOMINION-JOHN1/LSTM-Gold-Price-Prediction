@@ -2,7 +2,7 @@ name: Update_Model
 
 on:
   schedule:
-    - cron: "09 20 * * *"
+    - cron: "14 20 * * *"
 
 jobs:
   update_model:
@@ -10,23 +10,28 @@ jobs:
 
     steps:
       - name: Check Out Code
-        uses: actions/checkout@v4  # Use the latest version of the action
+        uses: actions/checkout@v4
     
       - name: Set up Node.js
-        uses: actions/setup-node@v4  # Use the latest version of the action
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'  # Specify the Node.js version you want to use
+          node-version: '16'
 
       - name: Set up Python
-        uses: actions/setup-python@v4  # Use the latest version of the action
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  # Use the latest available Python 3 version
+          python-version: '3.10'
 
       - name: Install Dependencies
         run: |
           python -m venv .venv
           . .venv/Scripts/activate
           pip install -r requirements.txt
+          
+      - name: Install Additional Package
+        run: |
+          . .venv/Scripts/activate
+          pip install yfinance  # Add this line to install yfinance
 
       - name: Update Model
         run: python update_model.py
