@@ -2,10 +2,11 @@ import yfinance as yf
 import pandas as pd
 from tensorflow import keras
 from sklearn.preprocessing import StandardScaler
+import numpy as np
 
 # Step 2: Acquire historical data from Yahoo Finance
 def fetch_gold_data():
-    gold_data = yf.download('GC=F', period='1d')
+    gold_data = yf.download('GC=F', period='1y')
     return gold_data
 
 # Step 3: Preprocess and clean the data
@@ -23,13 +24,25 @@ def preprocess_data(data):
 
 # Step 4: Update and retrain your LSTM model
 def update_and_retrain_model(model, scaler, data):
-    data.dropna(inplace=True)
-    X = data.drop(['Next Close'], axis=1)  # Adjusted to predict only the next close
-    y = data['Next Close']  # Adjusted to predict only the next close
+    # Extract features and target variable
+    X = data.drop(['Next Close'], axis=1)
+    y = data['Next Close']
+
+    # Handle NaN values in the target variable for sequence prediction
+    nan_indices = np.isnan(y)
+    y = y.fillna(0)  # Fill NaN values with a placeholder (you can choose a different value)
+
+    # Standardize features
     X = scaler.fit_transform(X)
-    X = X.reshape(X.shape[0], 1, X.shape[1])  # Reshape X for LSTM input
+
+    # Reshape X for LSTM input
+    X = X.reshape(X.shape[0], 1, X.shape[1])
+
+    # Train the model
     model.fit(X, y, epochs=100, batch_size=32, validation_split=0.2)
+
     return model
+
 
 # Main function
 def main():
@@ -51,7 +64,7 @@ def main():
     updated_model = update_and_retrain_model(model, scaler, cleaned_data)
 
     # Save the updated LSTM model
-    updated_model.save('best_model.h5')
+    updated_model.save('best_model (1).h5')
 
 if __name__ == '__main__':
     main()
