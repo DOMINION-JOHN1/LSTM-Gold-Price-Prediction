@@ -39,7 +39,7 @@ def update_and_retrain_model(model, scaler, data):
     X = X.reshape(X.shape[0], 1, X.shape[1])
 
     # Train the model
-    model.fit(X, y, epochs=100, batch_size=32, validation_split=0.2)
+    model.fit(X, y, epochs=5, batch_size=32, validation_split=0.2)
 
     return model
 
