@@ -2,7 +2,7 @@ name: Update_Model
 
 on:
   schedule:
-    - cron: "00 15 * * *"
+    - cron: "40 15 * * *"
 
 jobs:
   update_model:
@@ -34,4 +34,4 @@ jobs:
           git remote add origin_with_token https://$GOLD_TOKEN@github.com/DOMINION-JOHN1/LSTM-Gold-Price-Prediction.git
           git push origin_with_token main
         env:
-          PAT_TOKEN: ${{ secrets.GOLD_TOKEN }}
+          GOLD_TOKEN: ${{ secrets.GOLD_TOKEN }}
