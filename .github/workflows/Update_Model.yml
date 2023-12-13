@@ -2,7 +2,7 @@ name: Update_Model
 
 on:
   schedule:
-    - cron: "13 16 * * *"
+    - cron: "15 22 * * *"
 
 jobs:
   update_model:
@@ -34,4 +34,4 @@ jobs:
           git commit -m "Update LSTM Model"
           git push origin HEAD:refs/heads/main
         env:
-          GOLD_TOKEN: ${{ secrets.GOLD_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
