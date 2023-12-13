@@ -2,7 +2,7 @@ name: Update_Model
 
 on:
   schedule:
-    - cron: "49 15 * * *"
+    - cron: "41 15 * * *"
 
 jobs:
   update_model:
@@ -24,8 +24,8 @@ jobs:
 
       - name: Update Model
         run: |
-          git config --global user.email "jdominion123@gmail.com"
-          git config --global user.name "DOMINION-JOHN1"
+          git config user.email "jdominion123@gmail.com"
+          git config user.name "DOMINION-JOHN1"
           python update_model.py
 
       - name: Commit and Push
