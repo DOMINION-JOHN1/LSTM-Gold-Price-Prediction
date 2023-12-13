@@ -2,7 +2,7 @@ name: Update_Model
 
 on:
   schedule:
-    - cron: "32 11 * * *"
+    - cron: "49 15 * * *"
 
 jobs:
   update_model:
@@ -23,7 +23,10 @@ jobs:
           pip install yfinance  # Add this line to install yfinance
 
       - name: Update Model
-        run: python update_model.py
+        run: |
+          git config --global user.email "jdominion123@gmail.com"
+          git config --global user.name "DOMINION-JOHN1"
+          python update_model.py
 
       - name: Commit and Push
         run: |
@@ -31,4 +34,4 @@ jobs:
           git commit -m "Update LSTM Model"
           git push origin HEAD:refs/heads/main
         env:
-          GITHUB_TOKEN: ${{ secrets.GOLD_TOKEN }}
+          GOLD_TOKEN: ${{ secrets.GOLD_TOKEN }}
