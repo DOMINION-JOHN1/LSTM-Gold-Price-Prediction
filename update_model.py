@@ -6,7 +6,7 @@ import numpy as np
 
 # Step 2: Acquire historical data from Yahoo Finance
 def fetch_gold_data():
-    gold_data = yf.download('GC=F', period='1y')
+    gold_data = yf.download('GC=F', period='2y')
     return gold_data
 
 # Step 3: Preprocess and clean the data
@@ -39,7 +39,7 @@ def update_and_retrain_model(model, scaler, data):
     X = X.reshape(X.shape[0], 1, X.shape[1])
 
     # Train the model
-    model.fit(X, y, epochs=5, batch_size=32, validation_split=0.2)
+    model.fit(X, y, epochs=100, batch_size=15, validation_split=0.2)
 
     return model
 
@@ -49,7 +49,7 @@ def main():
     scaler = StandardScaler()
 
     # Load the existing LSTM model
-    model = keras.models.load_model('best_model (1).h5')
+    model = keras.models.load_model('best_model.h5')
 
     # Step 1: Set up the script
     print("Updating the LSTM model with the latest data...")
@@ -64,7 +64,7 @@ def main():
     updated_model = update_and_retrain_model(model, scaler, cleaned_data)
 
     # Save the updated LSTM model
-    updated_model.save('best_model (1).h5')
+    updated_model.save('best_model.h5')
 
 if __name__ == '__main__':
     main()
